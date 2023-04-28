@@ -30,4 +30,16 @@ export class DemoGoodsService extends BaseService {
     const find = this.demoGoodsEntity.createQueryBuilder();
     return this.entityRenderPage(find, query);
   }
+
+  async batchAdd(params) {
+    console.log(`111`);
+    
+    for (let i = 0; i < params.length; i++) {
+      console.log(`222`);
+      
+      const entity = DemoGoodsEntity.create(params[i]);
+      await this.demoGoodsEntity.save(entity);
+    }
+  }
+
 }
